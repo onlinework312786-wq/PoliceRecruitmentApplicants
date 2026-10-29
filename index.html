@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangladesh Police - Online Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif, 'SolaimanLipi', 'SutonnyMJ';
+            background-color: #e6ebed;
+            color: #333;
+            font-size: 12px;
+            line-height: 1.4;
+            padding: 15px 10px 40px;
+        }
+
+        .main-wrapper {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid #b8c4c7;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: linear-gradient(180deg, #054f33 0%, #033924 100%);
+            color: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-bottom: 2px solid #022316;
+        }
+
+        .police-logo-svg {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .header-titles {
+            flex-grow: 1;
+        }
+
+        .header-sub1 {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #e0f2eb;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        .header-main {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin: 2px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .header-motto {
+            font-size: 13px;
+            font-weight: 600;
+            color: #c9e6d9;
+            letter-spacing: 1.2px;
+        }
+
+        /* Top Navigation Bar */
+        .nav-menu {
+            background: #7a1d1d;
+            border-top: 1px solid #a82e2e;
+            border-bottom: 1px solid #571010;
+            padding: 4px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 16px;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 5px;
+            transition: all 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        .nav-menu span.divider {
+            color: #d88;
+            font-size: 11px;
+        }
+
+        /* Notice Banner */
+        .settings-bar {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            padding: 8px 15px;
+            margin: 10px 15px 5px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .settings-btn {
+            background: #054f33;
+            color: #fff;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .settings-btn:hover {
+            background: #033924;
+        }
+
+        /* Form Area */
+        .form-content {
+            padding: 15px 20px 25px;
+        }
+
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            background: #fbfbfb;
+            border: 1px solid #d9d9d9;
+        }
+
+        .form-table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .form-table tr:nth-child(even) {
+            background-color: #f7f9fa;
+        }
+
+        .form-table td {
+            padding: 6px 10px;
+            vertical-align: middle;
+            font-size: 12px;
+        }
+
+        .label-cell {
+            width: 25%;
+            font-weight: bold;
+            color: #222;
+            border-right: 1px solid #ececec;
+        }
+
+        .req {
+            color: #e51c23;
+            font-weight: bold;
+            margin-left: 2px;
+        }
+
+        .sep-cell {
+            width: 2%;
+            text-align: center;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .input-cell {
+            width: 73%;
+        }
+
+        /* Inputs and Selects */
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            height: 24px;
+            padding: 2px 6px;
+            font-size: 12px;
+            border: 1px solid #a6a6a6;
+            border-radius: 2px;
+            background-color: #ffffff;
+            color: #111;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            border-color: #054f33;
+            outline: 1px solid #054f33;
+            background-color: #fffff8;
+        }
+
+        .input-full {
+            width: 85%;
+            max-width: 380px;
+        }
+
+        .input-uppercase {
+            text-transform: uppercase;
+        }
+
+        .input-inline {
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .radio-group label {
+            margin-right: 18px;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .warning-text {
+            color: #c90000;
+            font-size: 11px;
+            font-style: italic;
+            margin-top: 3px;
+            display: block;
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+        }
+
+        /* Address Split Table */
+        .two-column-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .address-box {
+            border: 1px solid #c9d7d9;
+            background: #ffffff;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #cfdeda;
+            color: #043825;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-size: 12px;
+            border-bottom: 1px solid #b2c8c1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header label {
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: normal;
+            color: #103322;
+        }
+
+        .section-header input[type="checkbox"] {
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .inner-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inner-table td {
+            padding: 5px 8px;
+            font-size: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .inner-label {
+            width: 38%;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .inner-table input[type="text"],
+        .inner-table select {
+            width: 95%;
+        }
+
+        /* Academic Qualification Table */
+        .academic-section {
+            border: 1px solid #b8ccd2;
+            margin-bottom: 15px;
+            background: #ffffff;
+        }
+
+        .main-sec-title {
+            background: #bccdc8;
+            font-weight: bold;
+            font-size: 12px;
+            color: #053b26;
+            padding: 5px 10px;
+            border-bottom: 1px solid #a3b8b1;
+        }
+
+        .academic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid #fff;
+        }
+
+        .academic-col {
+            padding: 10px;
+        }
+
+        .academic-col:first-child {
+            border-right: 1px solid #ddd;
+        }
+
+        .col-subtitle {
+            font-weight: bold;
+            font-size: 12px;
+            color: #2e4d41;
+            border-bottom: 1px solid #d3dedb;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+
+        .optional-tag {
+            font-size: 10px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* Validation & Declaration */
+        .declaration-box {
+            background: #c3cfcc;
+            border: 1px solid #b0bfbc;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .captcha-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .captcha-code-display {
+            background: #e8eaed;
+            border: 2px dashed #6c757d;
+            padding: 4px 16px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2b3a4a;
+            user-select: none;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transform: skew(-5deg);
+        }
+
+        .btn-reload {
+            background: #e0e0e0;
+            border: 1px solid #999;
+            padding: 2px 7px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+
+        .btn-reload:hover {
+            background: #d0d0d0;
+        }
+
+        .agreement-row {
+            margin: 10px 0 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .agreement-row input {
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: linear-gradient(180deg, #f0f0f0 0%, #d4d4d4 100%);
+            border: 1px solid #888;
+            padding: 6px 36px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #222;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(180deg, #e4e4e4 0%, #c4c4c4 100%);
+            border-color: #555;
+        }
+
+        .btn-submit:active {
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #f1f4f4;
+            border-top: 1px solid #d4dedf;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .footer-teletalk {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #333;
+        }
+
+        /* Modal Dialog */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #fff;
+            max-width: 650px;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            background: #054f33;
+            color: #fff;
+            padding: 12px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 18px 20px;
+            overflow-y: auto;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            background: #f5f5f5;
+            padding: 10px 18px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .code-input-box {
+            width: 100%;
+            padding: 8px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 6px;
+            font-family: monospace;
+        }
+
+        /* Success Card */
+        .success-box {
+            background: #e8f5e9;
+            border: 1px solid #81c784;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .success-box h3 {
+            color: #2e7d32;
+            margin-bottom: 6px;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-top: 10px;
+        }
+
+        .summary-table th, .summary-table td {
+            border: 1px solid #ddd;
+            padding: 5px 8px;
+            text-align: left;
+        }
+
+        .summary-table th {
+            background: #f0f0f0;
+            width: 35%;
+        }
+
+        .copy-btn-inline {
+            background: #054f33;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            font-size: 10px;
+            border-radius: 2px;
+            cursor: pointer;
+            float: right;
+        }
+        .copy-btn-inline:hover {
+            background: #033924;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .two-column-container, .academic-grid {
+                grid-template-columns: 1fr;
+            }
+            .academic-col:first-child {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .top-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .form-table td {
+                padding: 6px 4px;
+            }
+            .label-cell {
+                width: 35%;
+            }
+            .input-cell {
+                width: 63%;
+            }
+            .input-full {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+        <!-- SVG Bangladesh Police Monogram -->
+        <svg class="police-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="#0b3824" stroke="#d4af37" stroke-width="3"/>
+            <!-- Outer Cog/Gear Border -->
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <!-- Center Shield / Crest -->
+            <path d="M50 14 L75 25 L75 56 C75 73 50 85 50 85 C50 85 25 73 25 56 L25 25 Z" fill="#b91c1c" stroke="#d4af37" stroke-width="2"/>
+            <!-- Inner Boat (Nouka - traditional police emblem element) -->
+            <path d="M34 50 Q50 62 66 50 Q50 56 34 50 Z" fill="#ffffff"/>
+            <!-- Water Waves -->
+            <path d="M30 63 Q40 68 50 63 Q60 68 70 63" fill="none" stroke="#38bdf8" stroke-width="2"/>
+            <path d="M33 69 Q42 74 50 69 Q58 74 67 69" fill="none" stroke="#38bdf8" stroke-width="2"/>
+            <!-- Rice/Wheat Sheaves in Crest -->
+            <path d="M32 30 Q38 42 50 46 Q62 42 68 30" fill="none" stroke="#fbbf24" stroke-width="2"/>
+            <!-- Star at top -->
+            <polygon points="50,18 53,24 60,24 54,28 56,34 50,30 44,34 46,28 40,24 47,24" fill="#fbbf24"/>
+            <!-- Banner / Ribbon at bottom -->
+            <path d="M22 83 Q50 93 78 83 L75 88 Q50 98 25 88 Z" fill="#d4af37"/>
+        </svg>
+
+        <div class="header-titles">
+            <div class="header-sub1">Government of the People's Republic of Bangladesh</div>
+            <div class="header-main">Bangladesh Police</div>
+            <div class="header-motto">Discipline | Security | Progress</div>
+        </div>
+    </header>
+
+    <!-- Menu Links -->
+    <nav class="nav-menu">
+        <a href="#form">Home</a> <span class="divider">|</span>
+        <a href="javascript:alert('Photo: 300x300 px (Max 100KB), Signature: 300x80 px (Max 60KB)')">Photo/Signature Validator</a> <span class="divider">|</span>
+        <a href="javascript:showSubmissionHistory()">Download Applicant's Copy</a> <span class="divider">|</span>
+        <a href="javascript:openSettingsModal()">Google Sheet Setup</a> <span class="divider">|</span>
+        <a href="javascript:alert('কোন তথ্যের জন্য এডমিন বা হেল্পলাইনে যোগাযোগ করুন।')">Help</a>
+    </nav>
+
+    <!-- Google Sheet Web App Status Bar -->
+    <div class="settings-bar" id="statusBar">
+        <div>
+            <strong>Google Sheet স্ট্যাটাস:</strong> 
+            <span id="sheetConnectionStatus" style="color: #d32f2f; font-weight: bold;">⚠️ গুগল শিট এখনও কানেক্ট করা হয়নি (লোকাল টেস্ট মোড)</span>
+        </div>
+        <button type="button" class="settings-btn" onclick="openSettingsModal()">⚙️ গুগল শিট কানেক্ট করুন</button>
+    </div>
+
+    <!-- Main Form Area -->
+    <div class="form-content">
+        <form id="policeAppForm" onsubmit="handleFormSubmit(event)">
+            
+            <!-- Basic Information Table -->
+            <table class="form-table">
+                <tr>
+                    <td class="label-cell">Name of the Post</td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <strong style="color: #054f33; font-size: 13px;">Trainee Recruit Constable (TRC)</strong>
+                        <input type="hidden" name="post_name" value="Trainee Recruit Constable">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Applicant's Name<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="text" name="applicant_name" class="input-full input-uppercase" required placeholder="MD. NASIM ALI">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Father's Name<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="text" name="father_name" class="input-full input-uppercase" required placeholder="MD. AZARUL HOQUE">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Mother's Name<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="text" name="mother_name" class="input-full input-uppercase" required placeholder="MST NASIMA BEGUM">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Date of Birth<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <span class="input-inline">Day: 
+                            <select name="dob_day" required id="dob_day" style="width: 58px;">
+                                <option value="">Day</option>
+                            </select>
+                        </span>
+                        <span class="input-inline">Month: 
+                            <select name="dob_month" required id="dob_month" style="width: 105px;">
+                                <option value="">Month</option>
+                                <option value="01 - January">01 - January</option>
+                                <option value="02 - February">02 - February</option>
+                                <option value="03 - March">03 - March</option>
+                                <option value="04 - April">04 - April</option>
+                                <option value="05 - May">05 - May</option>
+                                <option value="06 - June">06 - June</option>
+                                <option value="07 - July">07 - July</option>
+                                <option value="08 - August">08 - August</option>
+                                <option value="09 - September">09 - September</option>
+                                <option value="10 - October">10 - October</option>
+                                <option value="11 - November">11 - November</option>
+                                <option value="12 - December">12 - December</option>
+                            </select>
+                        </span>
+                        <span class="input-inline">Year: 
+                            <select name="dob_year" required id="dob_year" style="width: 72px;">
+                                <option value="">Year</option>
+                            </select>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Gender<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell radio-group">
+                        <label><input type="radio" name="gender" value="Male" required checked> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                        <span style="margin-left: 30px; font-weight: bold;">Religion<span class="req">*</span> :</span>
+                        <select name="religion" required style="width: 120px; margin-left: 8px;">
+                            <option value="">Select One</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Hinduism">Hinduism</option>
+                            <option value="Buddhism">Buddhism</option>
+                            <option value="Christianity">Christianity</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Blood Group<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <select name="blood_group" required style="width: 140px;">
+                            <option value="">Select One</option>
+                            <option value="A+">A (+ve)</option>
+                            <option value="A-">A (-ve)</option>
+                            <option value="B+">B (+ve)</option>
+                            <option value="B-">B (-ve)</option>
+                            <option value="O+">O (+ve)</option>
+                            <option value="O-">O (-ve)</option>
+                            <option value="AB+">AB (+ve)</option>
+                            <option value="AB-">AB (-ve)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Quota<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <select name="quota" required style="width: 260px;">
+                            <option value="">Select One</option>
+                            <option value="Non Quota (General)">Non Quota (General)</option>
+                            <option value="Freedom Fighter (Child/Grandchild)">Freedom Fighter (Child/Grandchild)</option>
+                            <option value="Orphan & Physical Handicapped">Orphan & Physical Handicapped</option>
+                            <option value="Ansar & VDP">Ansar & VDP</option>
+                            <option value="Police Petty">Police Petty</option>
+                            <option value="Ethnic Minority">Ethnic Minority</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Height/Weight<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <span class="input-inline">Feet: 
+                            <select name="height_feet" required style="width: 95px;">
+                                <option value="">Select One</option>
+                                <option value="4">4 Feet</option>
+                                <option value="5" selected>5 Feet</option>
+                                <option value="6">6 Feet</option>
+                            </select>
+                        </span>
+                        <span class="input-inline">Inches: 
+                            <select name="height_inch" required style="width: 95px;">
+                                <option value="">Select One</option>
+                                <option value="0">0 Inch</option>
+                                <option value="1">1 Inch</option>
+                                <option value="2">2 Inches</option>
+                                <option value="3">3 Inches</option>
+                                <option value="4">4 Inches</option>
+                                <option value="5">5 Inches</option>
+                                <option value="6" selected>6 Inches</option>
+                                <option value="7">7 Inches</option>
+                                <option value="8">8 Inches</option>
+                                <option value="9">9 Inches</option>
+                                <option value="10">10 Inches</option>
+                                <option value="11">11 Inches</option>
+                            </select>
+                        </span>
+                        <span class="input-inline">Weight(kg): 
+                            <select name="weight_kg" required style="width: 105px;" id="weight_kg">
+                                <option value="">Select One</option>
+                            </select>
+                        </span>
+                        <span class="warning-text">সঠিক উচ্চতা এন্ট্রি করার জন্য বলা হচ্ছে। অন্যথায় আবেদনপত্র বাতিল বলে গণ্য হবে</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Chest Measurement<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <span class="input-inline">Normal (Inches): 
+                            <input type="number" step="0.5" name="chest_normal" style="width: 70px;" placeholder="31" required>
+                        </span>
+                        <span class="input-inline">Expanded (Inches): 
+                            <input type="number" step="0.5" name="chest_expanded" style="width: 70px;" placeholder="33" required>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Nationality<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <strong>Bangladeshi</strong>
+                        <input type="hidden" name="nationality" value="Bangladeshi">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Birth Registration<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell radio-group">
+                        <label><input type="radio" name="has_birth_cert" value="Yes" onchange="toggleCertInput('birth', true)" checked> Yes</label>
+                        <label><input type="radio" name="has_birth_cert" value="No" onchange="toggleCertInput('birth', false)"> No</label>
+                        <input type="text" name="birth_cert_no" id="birth_cert_no" placeholder="Enter 17-digit Birth Certificate No" style="width: 250px; margin-left: 10px;" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">National ID<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell radio-group">
+                        <label><input type="radio" name="has_nid" value="Yes" onchange="toggleCertInput('nid', true)"> Yes</label>
+                        <label><input type="radio" name="has_nid" value="No" onchange="toggleCertInput('nid', false)" checked> No</label>
+                        <input type="text" name="nid_no" id="nid_no" placeholder="Enter NID No (10, 13 or 17 digit)" style="width: 250px; margin-left: 10px; display: none;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Marital Status<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell radio-group">
+                        <label><input type="radio" name="marital_status" value="Single" checked> Single</label>
+                        <label><input type="radio" name="marital_status" value="Married"> Married</label>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Address Section (Two-Column Layout) -->
+            <div class="two-column-container">
+                <!-- Present Address -->
+                <div class="address-box">
+                    <div class="section-header">
+                        <span>Present Address<span class="req">*</span></span>
+                    </div>
+                    <table class="inner-table">
+                        <tr>
+                            <td class="inner-label">Care of</td>
+                            <td><input type="text" name="present_care_of" id="present_care_of" class="input-uppercase" placeholder="Father or Guardian Name"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Village/Town/Road/House/Flat</td>
+                            <td><input type="text" name="present_village" id="present_village" required placeholder="Village or Road details"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">District<span class="req">*</span></td>
+                            <td>
+                                <select name="present_district" id="present_district" required onchange="handleDistrictChange('present')">
+                                    <option value="">Select a District</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Thana/Upazila<span class="req">*</span></td>
+                            <td><input type="text" name="present_thana" id="present_thana" required placeholder="Thana / Upazila name"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Post Office</td>
+                            <td><input type="text" name="present_post_office" id="present_post_office" placeholder="Post Office"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Post Code</td>
+                            <td><input type="text" name="present_post_code" id="present_post_code" placeholder="e.g. 1200"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Permanent Address -->
+                <div class="address-box">
+                    <div class="section-header">
+                        <span>Permanent Address</span>
+                        <label><input type="checkbox" id="same_as_present" onchange="copyPresentToPermanent()"> Same as present address</label>
+                    </div>
+                    <table class="inner-table">
+                        <tr>
+                            <td class="inner-label">Care of</td>
+                            <td><input type="text" name="perm_care_of" id="perm_care_of" class="input-uppercase" placeholder="Father or Guardian Name"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Village/Town/Road/House/Flat</td>
+                            <td><input type="text" name="perm_village" id="perm_village" required placeholder="Village or Road details"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Home District<span class="req">*</span></td>
+                            <td>
+                                <select name="perm_district" id="perm_district" required onchange="handleDistrictChange('perm')">
+                                    <option value="">Select a District</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Thana/Upazila<span class="req">*</span></td>
+                            <td><input type="text" name="perm_thana" id="perm_thana" required placeholder="Thana / Upazila name"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Post Office</td>
+                            <td><input type="text" name="perm_post_office" id="perm_post_office" placeholder="Post Office"></td>
+                        </tr>
+                        <tr>
+                            <td class="inner-label">Post Code</td>
+                            <td><input type="text" name="perm_post_code" id="perm_post_code" placeholder="e.g. 1200"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <table class="form-table">
+                <tr>
+                    <td class="label-cell">Mobile Number<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="tel" name="mobile_number" id="mobile_number" class="input-full" pattern="[0-9]{11}" placeholder="01712345678 (11 digits)" required>
+                        <span class="warning-text">Mention a Mobile Number of any operator. Relevant information will be sent by SMS to that number.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Confirm Mobile<span class="req">*</span></td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="tel" name="confirm_mobile" id="confirm_mobile" class="input-full" placeholder="Retype Mobile Number" required onkeyup="checkMobileMatch()">
+                        <span id="mobile_match_msg" style="font-size: 11px; margin-left: 8px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Email Address (Optional)</td>
+                    <td class="sep-cell">:</td>
+                    <td class="input-cell">
+                        <input type="email" name="email_address" class="input-full" placeholder="applicant@example.com">
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Academic Qualifications Section -->
+            <div class="academic-section">
+                <div class="main-sec-title">Academic Qualifications:</div>
+                <div class="academic-grid">
+                    <!-- S.S.C or Equivalent -->
+                    <div class="academic-col">
+                        <div class="col-subtitle">S.S.C. or Equivalent<span class="req">*</span></div>
+                        <table class="inner-table">
+                            <tr>
+                                <td class="inner-label">Examination</td>
+                                <td>
+                                    <select name="ssc_exam" required>
+                                        <option value="">Select One</option>
+                                        <option value="S.S.C">S.S.C</option>
+                                        <option value="Dakhil">Dakhil</option>
+                                        <option value="S.S.C Vocational">S.S.C Vocational</option>
+                                        <option value="O Level / Equivalent">O Level / Equivalent</option>
+                                        <option value="Equivalent">Equivalent</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Board</td>
+                                <td>
+                                    <select name="ssc_board" required id="ssc_board">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Roll No</td>
+                                <td><input type="text" name="ssc_roll" required placeholder="e.g. 123456"></td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Reg No</td>
+                                <td><input type="text" name="ssc_reg" required placeholder="e.g. 1234567890"></td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Result</td>
+                                <td>
+                                    <div style="display: flex; gap: 4px;">
+                                        <select name="ssc_result_type" id="ssc_result_type" required onchange="toggleGpaInput('ssc')">
+                                            <option value="">Select</option>
+                                            <option value="GPA (out of 5)" selected>GPA (out of 5)</option>
+                                            <option value="1st Division">1st Division</option>
+                                            <option value="2nd Division">2nd Division</option>
+                                            <option value="3rd Division">3rd Division</option>
+                                            <option value="Passed">Passed</option>
+                                        </select>
+                                        <input type="text" name="ssc_gpa" id="ssc_gpa" placeholder="GPA (e.g. 4.50)" style="width: 90px;" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Group</td>
+                                <td>
+                                    <select name="ssc_group" required>
+                                        <option value="">Select One</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Humanities">Humanities</option>
+                                        <option value="Business Studies">Business Studies</option>
+                                        <option value="General">General</option>
+                                        <option value="Vocational">Vocational</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Passing Year</td>
+                                <td>
+                                    <select name="ssc_year" required id="ssc_year">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- H.S.C or Equivalent [Optional] -->
+                    <div class="academic-col">
+                        <div class="col-subtitle">H.S.C. or Equivalent <span class="optional-tag">[optional]</span></div>
+                        <table class="inner-table">
+                            <tr>
+                                <td class="inner-label">Examination</td>
+                                <td>
+                                    <select name="hsc_exam">
+                                        <option value="">Select One</option>
+                                        <option value="H.S.C">H.S.C</option>
+                                        <option value="Alim">Alim</option>
+                                        <option value="H.S.C Vocational">H.S.C Vocational</option>
+                                        <option value="H.S.C BM">H.S.C BM</option>
+                                        <option value="A Level / Equivalent">A Level / Equivalent</option>
+                                        <option value="Equivalent">Equivalent</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Board</td>
+                                <td>
+                                    <select name="hsc_board" id="hsc_board">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Roll No</td>
+                                <td><input type="text" name="hsc_roll" placeholder="Optional"></td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Reg No</td>
+                                <td><input type="text" name="hsc_reg" placeholder="Optional"></td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Result</td>
+                                <td>
+                                    <div style="display: flex; gap: 4px;">
+                                        <select name="hsc_result_type" id="hsc_result_type" onchange="toggleGpaInput('hsc')">
+                                            <option value="">Select</option>
+                                            <option value="GPA (out of 5)">GPA (out of 5)</option>
+                                            <option value="1st Division">1st Division</option>
+                                            <option value="2nd Division">2nd Division</option>
+                                            <option value="3rd Division">3rd Division</option>
+                                            <option value="Appeared">Appeared</option>
+                                        </select>
+                                        <input type="text" name="hsc_gpa" id="hsc_gpa" placeholder="GPA" style="width: 80px; display: none;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Group</td>
+                                <td>
+                                    <select name="hsc_group">
+                                        <option value="">Select One</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Humanities">Humanities</option>
+                                        <option value="Business Studies">Business Studies</option>
+                                        <option value="General">General</option>
+                                        <option value="Vocational">Vocational</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="inner-label">Passing Year</td>
+                                <td>
+                                    <select name="hsc_year" id="hsc_year">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills/Extra Curricular -->
+            <div class="academic-section">
+                <div class="main-sec-title">Skills/Extra Curricular <span class="optional-tag">[If applicable]</span></div>
+                <table class="form-table" style="margin-bottom: 0;">
+                    <tr>
+                        <td class="label-cell" style="width: 25%;">Type of Skill</td>
+                        <td class="sep-cell">:</td>
+                        <td class="input-cell">
+                            <select name="skill_type" style="width: 220px;">
+                                <option value="">Select One</option>
+                                <option value="Computer / IT">Computer / IT</option>
+                                <option value="Driving (Light/Heavy)">Driving (Light/Heavy)</option>
+                                <option value="Swimming">Swimming</option>
+                                <option value="Sports / Athletics">Sports / Athletics</option>
+                                <option value="Scouting / BNCC / Rover">Scouting / BNCC / Rover</option>
+                                <option value="Music / Cultural">Music / Cultural</option>
+                                <option value="Martial Arts">Martial Arts</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Particulars</td>
+                        <td class="sep-cell">:</td>
+                        <td class="input-cell">
+                            <input type="text" name="skill_particulars" class="input-full" placeholder="Details of skill / certificates if any">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Optional Photo & Signature Information for Easy Teletalk upload -->
+            <div class="academic-section">
+                <div class="main-sec-title">Applicant Photo & Signature <span class="optional-tag">[টেলিটকে আবেদনের জন্য ছবি ও স্বাক্ষর লিঙ্ক / নোট]</span></div>
+                <table class="form-table" style="margin-bottom: 0;">
+                    <tr>
+                        <td class="label-cell" style="width: 25%;">Photo Link / Details</td>
+                        <td class="sep-cell">:</td>
+                        <td class="input-cell">
+                            <input type="text" name="photo_link" class="input-full" placeholder="Google Drive Link or Photo Note (300 x 300 px)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Signature Link / Details</td>
+                        <td class="sep-cell">:</td>
+                        <td class="input-cell">
+                            <input type="text" name="signature_link" class="input-full" placeholder="Google Drive Link or Signature Note (300 x 80 px)">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Validation Code & Declaration Box -->
+            <div class="declaration-box">
+                <div class="captcha-row">
+                    <span style="font-weight: bold; color: #111;">Validation Code<span class="req">*</span> :</span>
+                    <div class="captcha-code-display" id="captchaBox">BL354C4V</div>
+                    <button type="button" class="btn-reload" onclick="refreshCaptcha()" title="Generate New Code">↻ Refresh</button>
+                    <input type="text" id="captchaInput" placeholder="Enter the Code" style="width: 130px; text-transform: uppercase;" required>
+                </div>
+
+                <div class="agreement-row">
+                    <label>
+                        <input type="checkbox" id="declaration_agree" required>
+                        The above information is correct and I would like to go to the next step.
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-submit" id="submitBtn">Next</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div>©2026, All Rights Reserved by Bangladesh Police.</div>
+        <div class="footer-teletalk">
+            <span>Powered by</span>
+            <!-- Teletalk Logo Representation -->
+            <svg width="68" height="20" viewBox="0 0 120 35" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="18" r="13" fill="#008037"/>
+                <circle cx="16" cy="18" r="8" fill="#e30613"/>
+                <path d="M16 5 A13 13 0 0 1 29 18" stroke="#ffffff" stroke-width="2" fill="none"/>
+                <text x="35" y="24" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#008037">teletalk</text>
+            </svg>
+        </div>
+    </footer>
+</div>
+
+<!-- Settings Modal for Google Sheet URL -->
+<div class="modal-overlay" id="settingsModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <span>⚙️ গুগল শিট (Google Sheet) কানেকশন কনফিগারেশন</span>
+            <button type="button" class="modal-close" onclick="closeSettingsModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>কিভাবে গুগল শিট কানেক্ট করবেন:</strong></p>
+            <ol style="margin-left: 20px; margin-top: 8px; margin-bottom: 15px;">
+                <li>আপনার গুগল ড্রাইভে একটি নতুন Google Sheet তৈরি করুন।</li>
+                <li>শিটের মেনু থেকে <strong>Extensions &gt; Apps Script</strong> এ যান।</li>
+                <li>আমাদের ফোল্ডারে থাকা <code>google-apps-script.js</code> ফাইলের সম্পূর্ণ কোড কপি করে সেখানে পেস্ট করে <strong>Save</strong> করুন।</li>
+                <li>উপরে ডানদিকের <strong>Deploy &gt; New Deployment</strong> এ ক্লিক করুন।</li>
+                <li>Select type &gt; <strong>Web app</strong> নির্বাচন করুন।</li>
+                <li>Who has access: <strong>Anyone</strong> সিলেক্ট করে <strong>Deploy</strong> এ ক্লিক করুন।</li>
+                <li>পেয়ে যাওয়া <strong>Web App URL</strong> টি নিচের বক্সে পেস্ট করে সেভ করুন।</li>
+            </ol>
+            <label><strong>Google Apps Script Web App URL:</strong></label>
+            <input type="text" id="scriptUrlInput" class="code-input-box" placeholder="https://script.google.com/macros/s/AKfycbx.../exec">
+            <p style="font-size: 11px; color: #666; margin-top: 6px;">
+                * এই URL টি ব্রাউজারে সংরক্ষিত থাকবে। একবার বসালে যত স্টুডেন্ট ফর্ম জমা দিবে সবার তথ্য আপনার গুগল শিটে স্বয়ংক্রিয়ভাবে জমা হবে।
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-submit" style="padding: 5px 15px;" onclick="saveSettings()">Save & Connect</button>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal / Applicant Copy Modal -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-box" style="max-width: 750px;">
+        <div class="modal-header">
+            <span>✅ আবেদন সফল হয়েছে - Applicant Copy</span>
+            <button type="button" class="modal-close" onclick="closeSuccessModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="successModalBody">
+            <!-- Dynamic Content -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-submit" style="padding: 5px 15px;" onclick="window.print()">Print / PDF</button>
+            <button type="button" class="btn-submit" style="padding: 5px 15px;" onclick="closeSuccessModal()">নতুন আবেদন করুন</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 64 Districts of Bangladesh
+    const bdDistricts = [
+        "Bagerhat", "Bandarban", "Barguna", "Barishal", "Bhola", "Bogura", "Brahmanbaria", 
+        "Chandpur", "Chattogram", "Chuadanga", "Cox's Bazar", "Cumilla", "Dhaka", "Dinajpur", 
+        "Faridpur", "Feni", "Gaibandha", "Gazipur", "Gopalganj", "Habiganj", "Jamalpur", 
+        "Jashore", "Jhalokathi", "Jhenaidah", "Joypurhat", "Khagrachhari", "Khulna", 
+        "Kishoreganj", "Kurigram", "Kushtia", "Lakshmipur", "Lalmonirhat", "Madaripur", 
+        "Magura", "Manikganj", "Meherpur", "Moulvibazar", "Munshiganj", "Mymensingh", 
+        "Naogaon", "Narail", "Narayanganj", "Narsingdi", "Natore", "Netrokona", "Nilphamari", 
+        "Noakhali", "Pabna", "Panchagarh", "Patuakhali", "Pirojpur", "Rajbari", "Rajshahi", 
+        "Rangamati", "Rangpur", "Satkhira", "Shariatpur", "Sherpur", "Sirajganj", "Sunamganj", 
+        "Sylhet", "Tangail", "Thakurgaon"
+    ];
+
+    // Education Boards
+    const educationBoards = [
+        "Dhaka", "Barishal", "Chattogram", "Cumilla", "Dinajpur", 
+        "Jashore", "Mymensingh", "Rajshahi", "Sylhet", "Madrasah", "Technical", "BOU"
+    ];
+
+    let currentCaptcha = "";
+
+    // Initialization
+    window.addEventListener("DOMContentLoaded", function() {
+        populateDropdowns();
+        refreshCaptcha();
+        checkSavedScriptUrl();
+    });
+
+    function populateDropdowns() {
+        // Date of Birth Days (1 to 31)
+        const daySelect = document.getElementById("dob_day");
+        for (let i = 1; i <= 31; i++) {
+            let opt = document.createElement("option");
+            opt.value = i < 10 ? "0" + i : "" + i;
+            opt.textContent = i;
+            daySelect.appendChild(opt);
+        }
+
+        // Date of Birth Years (1995 to 2012)
+        const yearSelect = document.getElementById("dob_year");
+        const currentYear = 2026;
+        for (let y = 2012; y >= 1995; y--) {
+            let opt = document.createElement("option");
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        }
+
+        // Weight (kg) 40 to 105 kg
+        const weightSelect = document.getElementById("weight_kg");
+        for (let w = 40; w <= 100; w++) {
+            let opt = document.createElement("option");
+            opt.value = w;
+            opt.textContent = w + " kg";
+            if (w === 54) opt.selected = true;
+            weightSelect.appendChild(opt);
+        }
+
+        // Districts for Present and Permanent
+        const presDist = document.getElementById("present_district");
+        const permDist = document.getElementById("perm_district");
+        bdDistricts.forEach(d => {
+            let opt1 = document.createElement("option");
+            opt1.value = d;
+            opt1.textContent = d;
+            presDist.appendChild(opt1);
+
+            let opt2 = document.createElement("option");
+            opt2.value = d;
+            opt2.textContent = d;
+            permDist.appendChild(opt2);
+        });
+
+        // Boards
+        const sscBoard = document.getElementById("ssc_board");
+        const hscBoard = document.getElementById("hsc_board");
+        educationBoards.forEach(b => {
+            let opt1 = document.createElement("option");
+            opt1.value = b;
+            opt1.textContent = b;
+            sscBoard.appendChild(opt1);
+
+            let opt2 = document.createElement("option");
+            opt2.value = b;
+            opt2.textContent = b;
+            hscBoard.appendChild(opt2);
+        });
+
+        // Passing Years (2012 to 2026)
+        const sscYear = document.getElementById("ssc_year");
+        const hscYear = document.getElementById("hsc_year");
+        for (let y = 2026; y >= 2012; y--) {
+            let opt1 = document.createElement("option");
+            opt1.value = y;
+            opt1.textContent = y;
+            sscYear.appendChild(opt1);
+
+            let opt2 = document.createElement("option");
+            opt2.value = y;
+            opt2.textContent = y;
+            hscYear.appendChild(opt2);
+        }
+    }
+
+    // Captcha generator
+    function refreshCaptcha() {
+        const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+        let code = "";
+        for (let i = 0; i < 6; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        currentCaptcha = code;
+        document.getElementById("captchaBox").textContent = code;
+        document.getElementById("captchaInput").value = "";
+    }
+
+    // Toggle Birth Cert / NID inputs
+    function toggleCertInput(type, hasCert) {
+        if (type === 'birth') {
+            const input = document.getElementById("birth_cert_no");
+            if (hasCert) {
+                input.style.display = "inline-block";
+                input.required = true;
+            } else {
+                input.style.display = "none";
+                input.required = false;
+                input.value = "";
+            }
+        } else if (type === 'nid') {
+            const input = document.getElementById("nid_no");
+            if (hasCert) {
+                input.style.display = "inline-block";
+                input.required = true;
+            } else {
+                input.style.display = "none";
+                input.required = false;
+                input.value = "";
+            }
+        }
+    }
+
+    // Toggle GPA inputs
+    function toggleGpaInput(level) {
+        if (level === 'ssc') {
+            const resType = document.getElementById("ssc_result_type").value;
+            const gpaInput = document.getElementById("ssc_gpa");
+            if (resType.includes("GPA")) {
+                gpaInput.style.display = "inline-block";
+                gpaInput.required = true;
+            } else {
+                gpaInput.style.display = "none";
+                gpaInput.required = false;
+            }
+        } else if (level === 'hsc') {
+            const resType = document.getElementById("hsc_result_type").value;
+            const gpaInput = document.getElementById("hsc_gpa");
+            if (resType.includes("GPA")) {
+                gpaInput.style.display = "inline-block";
+            } else {
+                gpaInput.style.display = "none";
+            }
+        }
+    }
+
+    // Copy Present Address to Permanent Address
+    function copyPresentToPermanent() {
+        const isChecked = document.getElementById("same_as_present").checked;
+        if (isChecked) {
+            document.getElementById("perm_care_of").value = document.getElementById("present_care_of").value;
+            document.getElementById("perm_village").value = document.getElementById("present_village").value;
+            document.getElementById("perm_district").value = document.getElementById("present_district").value;
+            document.getElementById("perm_thana").value = document.getElementById("present_thana").value;
+            document.getElementById("perm_post_office").value = document.getElementById("present_post_office").value;
+            document.getElementById("perm_post_code").value = document.getElementById("present_post_code").value;
+        }
+    }
+
+    function handleDistrictChange(type) {
+        if (document.getElementById("same_as_present").checked && type === 'present') {
+            document.getElementById("perm_district").value = document.getElementById("present_district").value;
+        }
+    }
+
+    // Check Mobile Number Match
+    function checkMobileMatch() {
+        const mob = document.getElementById("mobile_number").value;
+        const conf = document.getElementById("confirm_mobile").value;
+        const msg = document.getElementById("mobile_match_msg");
+        if (!conf) {
+            msg.textContent = "";
+            return;
+        }
+        if (mob === conf) {
+            msg.textContent = "✓ নম্বর মিলেছে";
+            msg.style.color = "green";
+        } else {
+            msg.textContent = "✗ নম্বর মিলেনি!";
+            msg.style.color = "red";
+        }
+    }
+
+    // Google Apps Script Connection Setup
+    function checkSavedScriptUrl() {
+        const savedUrl = localStorage.getItem("police_form_gas_url");
+        const statusEl = document.getElementById("sheetConnectionStatus");
+        if (savedUrl && savedUrl.startsWith("http")) {
+            statusEl.innerHTML = '🟢 <span style="color: #2e7d32;">গুগল শিট কানেক্টেড আছে! (তথ্য সরাসরি শিটে জমা হবে)</span>';
+            document.getElementById("scriptUrlInput").value = savedUrl;
+        } else {
+            statusEl.innerHTML = '⚠️ <span style="color: #d32f2f;">গুগল শিট এখনও কানেক্ট করা হয়নি (সেটিংস বাটনে ক্লিক করে URL দিন)</span>';
+        }
+    }
+
+    function openSettingsModal() {
+        document.getElementById("settingsModal").style.display = "flex";
+    }
+
+    function closeSettingsModal() {
+        document.getElementById("settingsModal").style.display = "none";
+    }
+
+    function saveSettings() {
+        const url = document.getElementById("scriptUrlInput").value.trim();
+        if (url) {
+            localStorage.setItem("police_form_gas_url", url);
+            alert("গুগল শিট Web App URL সফলভাবে সেভ হয়েছে!");
+            checkSavedScriptUrl();
+            closeSettingsModal();
+        } else {
+            alert("দয়া করে সঠিক Web App URL প্রদান করুন।");
+        }
+    }
+
+    // Form Submission Handler
+    async function handleFormSubmit(e) {
+        e.preventDefault();
+
+        // 1. Validate Captcha
+        const userCaptcha = document.getElementById("captchaInput").value.trim().toUpperCase();
+        if (userCaptcha !== currentCaptcha) {
+            alert("ভ্যালিডেশন কোড (Validation Code) ভুল হয়েছে! দয়া করে সঠিক কোডটি দিন।");
+            refreshCaptcha();
+            return;
+        }
+
+        // 2. Validate Mobile
+        const mob = document.getElementById("mobile_number").value;
+        const conf = document.getElementById("confirm_mobile").value;
+        if (mob !== conf) {
+            alert("মোবাইল নম্বর এবং Confirm Mobile নম্বর এক নয়! দয়া করে মিলিয়ে নিন।");
+            return;
+        }
+
+        // 3. Collect Data
+        const form = document.getElementById("policeAppForm");
+        const formData = new FormData(form);
+        const dataObj = {};
+        for (let [key, val] of formData.entries()) {
+            dataObj[key] = val;
+        }
+
+        // Add formatted date of birth
+        dataObj["dob_formatted"] = `${dataObj.dob_day || ''}-${dataObj.dob_month || ''}-${dataObj.dob_year || ''}`;
+        dataObj["total_height"] = `${dataObj.height_feet || 0}' ${dataObj.height_inch || 0}"`;
+
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "তথ্য পাঠানো হচ্ছে...";
+
+        const scriptUrl = localStorage.getItem("police_form_gas_url");
+
+        if (scriptUrl && scriptUrl.startsWith("http")) {
+            try {
+                // Send to Google Sheets Apps Script
+                await fetch(scriptUrl, {
+                    method: "POST",
+                    mode: "no-cors", // Standard for Google Apps Script Web App
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataObj)
+                });
+
+                // Also save to local storage for applicant copy history
+                saveToLocalHistory(dataObj);
+
+                showSuccessModal(dataObj, true);
+            } catch (err) {
+                console.error("Submission Error:", err);
+                alert("গুগল শিটে পাঠাতে সমস্যা হয়েছে। তবে তথ্য ব্রাউজারে সংরক্ষিত হয়েছে।");
+                saveToLocalHistory(dataObj);
+                showSuccessModal(dataObj, false);
+            }
+        } else {
+            // Local Test Mode (Prompt user to connect Google Sheet)
+            saveToLocalHistory(dataObj);
+            showSuccessModal(dataObj, false);
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Next";
+        refreshCaptcha();
+    }
+
+    function saveToLocalHistory(data) {
+        let history = JSON.parse(localStorage.getItem("police_app_history") || "[]");
+        data.submitted_at = new Date().toLocaleString('en-GB');
+        history.unshift(data);
+        if (history.length > 50) history.pop();
+        localStorage.setItem("police_app_history", JSON.stringify(history));
+    }
+
+    function showSuccessModal(data, sentToSheet) {
+        const modalBody = document.getElementById("successModalBody");
+        let sheetNotice = sentToSheet 
+            ? `<div class="success-box">
+                 <h3>✅ তথ্য সফলভাবে আপনার Google Sheet-এ জমা হয়েছে!</h3>
+                 <p>নিচের প্রতিটি তথ্যের পাশে <strong>Copy</strong> বাটন রয়েছে। আপনি সরাসরি ক্লিক করে কপি করে টেলিটক অফিশিয়াল পোর্টালে নির্ভুলভাবে পেস্ট করতে পারেন।</p>
+               </div>`
+            : `<div class="success-box" style="background:#fff3e0; border-color:#ffb74d;">
+                 <h3 style="color:#e65100;">⚠️ লোকালভাবে সফলভাবে সম্পন্ন হয়েছে!</h3>
+                 <p>আপনার গুগল শিট এখনও কানেক্ট করা নেই। গুগল শিটে অটো পেতে উপরের <strong>'Google Sheet Setup'</strong> এ ক্লিক করে Web App URL দিন।</p>
+               </div>`;
+
+        let summaryHtml = `
+            ${sheetNotice}
+            <table class="summary-table">
+                <tr><th>Post Name</th><td>${data.post_name || 'Trainee Recruit Constable'}</td></tr>
+                <tr><th>Applicant Name</th><td><strong>${data.applicant_name || ''}</strong> <button class="copy-btn-inline" onclick="copyText('${data.applicant_name || ''}')">Copy</button></td></tr>
+                <tr><th>Father's Name</th><td>${data.father_name || ''} <button class="copy-btn-inline" onclick="copyText('${data.father_name || ''}')">Copy</button></td></tr>
+                <tr><th>Mother's Name</th><td>${data.mother_name || ''} <button class="copy-btn-inline" onclick="copyText('${data.mother_name || ''}')">Copy</button></td></tr>
+                <tr><th>Date of Birth</th><td>${data.dob_formatted || ''} <button class="copy-btn-inline" onclick="copyText('${data.dob_formatted || ''}')">Copy</button></td></tr>
+                <tr><th>Gender / Religion</th><td>${data.gender || ''} | ${data.religion || ''}</td></tr>
+                <tr><th>Blood Group / Quota</th><td>${data.blood_group || ''} | ${data.quota || ''}</td></tr>
+                <tr><th>Height / Weight</th><td>${data.total_height || ''} | ${data.weight_kg || ''} kg</td></tr>
+                <tr><th>Chest Measurement</th><td>Normal: ${data.chest_normal || ''}" | Expanded: ${data.chest_expanded || ''}"</td></tr>
+                <tr><th>Birth Reg / NID</th><td>Birth: ${data.birth_cert_no || 'No'} | NID: ${data.nid_no || 'No'} <button class="copy-btn-inline" onclick="copyText('${data.birth_cert_no || data.nid_no || ''}')">Copy</button></td></tr>
+                <tr><th>Present Address</th><td>${data.present_care_of || ''}, ${data.present_village || ''}, ${data.present_thana || ''}, ${data.present_district || ''} - ${data.present_post_code || ''}</td></tr>
+                <tr><th>Permanent Address</th><td>${data.perm_care_of || ''}, ${data.perm_village || ''}, ${data.perm_thana || ''}, ${data.perm_district || ''} - ${data.perm_post_code || ''}</td></tr>
+                <tr><th>Mobile Number</th><td><strong>${data.mobile_number || ''}</strong> <button class="copy-btn-inline" onclick="copyText('${data.mobile_number || ''}')">Copy</button></td></tr>
+                <tr><th>SSC Examination</th><td>Roll: ${data.ssc_roll || ''}, Reg: ${data.ssc_reg || ''}, Board: ${data.ssc_board || ''}, Result: ${data.ssc_result_type || ''} (${data.ssc_gpa || ''}), Year: ${data.ssc_year || ''}</td></tr>
+                ${data.hsc_exam ? `<tr><th>HSC Examination</th><td>Exam: ${data.hsc_exam}, Roll: ${data.hsc_roll || '-'}, Reg: ${data.hsc_reg || '-'}, Board: ${data.hsc_board || '-'}, Result: ${data.hsc_gpa || data.hsc_result_type || '-'}, Year: ${data.hsc_year || '-'}</td></tr>` : ''}
+                ${data.skill_type ? `<tr><th>Skills / Extra</th><td>${data.skill_type}: ${data.skill_particulars || '-'}</td></tr>` : ''}
+            </table>
+        `;
+
+        modalBody.innerHTML = summaryHtml;
+        document.getElementById("successModal").style.display = "flex";
+    }
+
+    function closeSuccessModal() {
+        document.getElementById("successModal").style.display = "none";
+        document.getElementById("policeAppForm").reset();
+        refreshCaptcha();
+    }
+
+    function showSubmissionHistory() {
+        let history = JSON.parse(localStorage.getItem("police_app_history") || "[]");
+        if (history.length === 0) {
+            alert("এখনও কোন আবেদন জমা দেওয়া হয়নি।");
+            return;
+        }
+        showSuccessModal(history[0], localStorage.getItem("police_form_gas_url") ? true : false);
+    }
+
+    function copyText(text) {
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("কপি হয়েছে: " + text);
+        }).catch(err => {
+            prompt("কপি করুন:", text);
+        });
+    }
+</script>
+
+</body>
+</html>
